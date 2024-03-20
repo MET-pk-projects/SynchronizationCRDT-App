@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRDT Data Synchronization</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Синхронизация данных между узлами </h1>
+        <h1>Узел 1 </h1>
+    </div>
+
+    <form id="name-form">
+        <div id="input-box">
+            <label for="person_name">Введите свое имя:</label>
+            <input type="text" id="person_name" name="person_name">
+            <button type="submit">Отправить</button>
+        </div>
+    </form>
+
+    <div id="result-box">
+        <p>Имя совместного лица: <span id="shared-person-name"></span></p>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
