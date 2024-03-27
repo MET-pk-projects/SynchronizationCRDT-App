@@ -23,7 +23,7 @@ database = 'database.db'
 Node1Model._meta.database.init(database)
 create_tables()
 
-@app.websocket('/ws')
+@app.websocket('/')
 async def ws():
     websocket_ = websocket._get_current_object()
     print('WebSocket connection opened')

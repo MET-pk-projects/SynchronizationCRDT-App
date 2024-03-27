@@ -26,9 +26,9 @@ async def on_connect(websocket):
                 Node1Model.create(person_name=person_name)
 
             # Convert the G-Set CRDT to a regular set for sending
-            data_to_send = person_names.data
+            data_to_send = list(person_names.payload)
             await websocket.send(json.dumps({
-                'person_names': list(data_to_send),
+                'person_names': data_to_send,
             }))
 
     except ConnectionClosed:

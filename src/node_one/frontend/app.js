@@ -3,22 +3,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const personNameInput = document.getElementById('person_name');
     const sharedPersonName = document.getElementById('shared-person-name');
 
-    const socket = new WebSocket('ws://localhost:8070');
+    let socket;
 
-    socket.onopen = (event) => {
-        console.log('WebSocket connected:', event);
-    };
+    try {
+        socket = new WebSocket('ws://localhost:8070/');
 
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const personName = personNameInput.value;
+        socket.onopen = (event) => {
+            console.log('WebSocket connected:', event);
+        };
 
-        socket.send(JSON.stringify({ person_name: personName }));
-    });
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const personName = personNameInput.value;
 
-    socket.onmessage = (event) => {        const data = JSON.parse(event.data);
-        if (data.person_names) {
-            sharedPersonName.textContent = data.person_names.join(', ');
-        }
-    };
+            socket.send(JSON.stringify({ person_name: personName }));
+        });
+
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            if (data.person_names) {
+                sharedPersonName.textContent = data.person_names.join(', ');
+            }
+        };
+    } catch (error) {
+        console.error('Error creating WebSocket:', error);
+    }
 });
