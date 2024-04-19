@@ -10,7 +10,7 @@ async def post_node1():
         data = await request.get_json()
         person_name = data.get('person_name') 
 
-        nname = Node1Model.create(person_name=person_name)
+        nname = Node1Model.create(person_name=person_name,account_number=123123213)
 
         return Response(
             status=200,

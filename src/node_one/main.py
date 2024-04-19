@@ -17,6 +17,7 @@ def create_tables():
     Node1Model.get_or_create(
         id=1,
         person_name="Sohaib",
+        account_number=1231231232
     )
 
 database = 'database.db'
@@ -30,6 +31,5 @@ async def ws():
     await on_connect(websocket_)
 
 if __name__ == '__main__':
-    
     app.run(host='0.0.0.0', port=8070)
 

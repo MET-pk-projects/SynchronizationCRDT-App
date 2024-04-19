@@ -15,7 +15,10 @@
     <form id="name-form">
         <div id="input-box">
             <label for="person_name">Введите свое имя:</label>
-            <input type="text" id="person_name" name="person_name">
+            <div class="form-wrapper">
+                <input type="text" id="person_name" placeholder="Person Name" name="person_name" required>
+                <input type="number" id="account_number" placeholder="Account Number" name="person_name" required>
+            </div>
             <button type="submit">Отправить</button>
         </div>
     </form>
@@ -23,6 +26,8 @@
     <div id="result-box">
         <p>Имя совместного лица: <span id="shared-person-name"></span></p>
     </div>
+
+    <div id="table-container"></div>
 
     <script src="./app.js"></script>
 </body>
